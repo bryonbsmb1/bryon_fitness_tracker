@@ -4,7 +4,7 @@ const db = require('../models/workout');
 //mongo data base added
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useFindAndModify: false,
+  // useFindAndModify: false,   // dont need this code 
   useUnifiedTopology: true,
 });
 
@@ -126,10 +126,10 @@ const workoutSeed = [
   },
 ];
 
-db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
+db.deleteMany({})
+  .then(() => db.collection.insertMany(workoutSeed))
   .then((data) => {
-    console.log(data.result.n + ' records inserted!');
+    console.log(data.insertedCount + ' records inserted!');
     process.exit(0);
   })
   .catch((err) => {
