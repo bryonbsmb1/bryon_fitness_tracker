@@ -37,7 +37,7 @@ app.get("/stats", (req, res) => {
 // Routes
 app.use(require("./routes/api.js"));
 
-app
+
 
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
