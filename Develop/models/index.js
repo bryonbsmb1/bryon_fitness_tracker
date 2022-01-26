@@ -1,3 +1,3 @@
-const Workout = require('./workout');  //cont Workout added
+const Workout = require('./workout');  //const Workout added
 
 module.exports = { Workout };

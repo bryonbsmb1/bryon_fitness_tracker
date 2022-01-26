@@ -1,51 +1,49 @@
-const mongoose = require ("mongoose");
-const Schema = mongoose.Schema;
-const WorkoutSchema = new Schema 
+const mongoose = require('mongoose');
 
-(
-    {
-        day: {type:Date,
-        default:Date.now,
+const Schema = mongoose.Schema;
+
+const workoutSchema = new Schema({
+    day: {
+        type: Date,
+        default: Date.now
     },
     exercises: [
         {
-            type: {String,
-            trim: true,},
-
-            name: {String,
-                trim: true,},
-
-            
-                duration: Number,
-            weight:{
-                type: Number,
-                default: 0,},
-            reps: {
-                type:Number,
-                default: 0,},
-            sets: {
-                type:Number,
-                default: 0,},
-            distance:{
-                type:Number,
-                default: 0,},
-    
-        },],
-            totalDuration: {
-
-                type: Number,
-                default: 0,
+            type: {
+                type: String,
+                trim: true,
+                required: "Select a type for your exercise"
             },
+            name: {
+                type: String,
+                trim: true,
+                required: "Enter a name for your exercise"
+            },
+            distance: {
+                type: Number
+            },
+            duration: {
+                type: Number
+            },
+            weight: {
+                type: Number
+            },
+            sets: {
+                type: Number
+            },
+            reps: {
+                type: Number
+            }
+        } 
+    ]
+    
+});
+
+const Workout = mongoose.model("Workout", workoutSchema);
 
 
-
-            });
-
-
-const Workout = mongoose.model("Workout", WorkoutSchema);
 module.exports = Workout;
 
-
             
 
 
@@ -73,4 +71,3 @@ module.exports = Workout;
 
 
 
-    });

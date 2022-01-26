@@ -1,11 +1,14 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
-// workout route added 
-const db = require('../models/workout'); 
-//mongo data base added
+const db = require('../models');
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  // useFindAndModify: false,   // dont need this code 
+  useFindAndModify: false,
   useUnifiedTopology: true,
+});
+mongoose.connection.once('open', () => {
+  console.log('connect to database from seeder')
 });
 
 const workoutSeed = [
@@ -126,10 +129,10 @@ const workoutSeed = [
   },
 ];
 
-db.deleteMany({})
-  .then(() => db.collection.insertMany(workoutSeed))
+db.Workout.deleteMany({})
+  .then(() => db.Workout.collection.insertMany(workoutSeed))
   .then((data) => {
-    console.log(data.insertedCount + ' records inserted!');
+    console.log(data.result.n + ' records inserted!');
     process.exit(0);
   })
   .catch((err) => {
