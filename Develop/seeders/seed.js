@@ -7,6 +7,12 @@ mongoose.connect(process.env.MONGODB_URI, {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+
+
+
+
+
 mongoose.connection.once('open', () => {
   console.log('connect to database from seeder')
 });
